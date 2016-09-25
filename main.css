@@ -1,3 +1,17 @@
-h1 {
-	color: red;
+.container {
+	background-color: #D3D3D3;
+}
+
+.news-results {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.news-results div {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }

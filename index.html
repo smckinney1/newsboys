@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Newsboys</title>
-	<link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<!--[if lt IE 9]>
@@ -16,7 +15,26 @@
 
 <body>
 
-	<h1>Initial Test</h1>
+	<div class="container">
+
+		<h1>Newsboys</h1>
+
+		<form>
+			<div><input id="search" type="textbox" placeholder="Search topic"></div>
+			<span>Date from: </span><input id="from-date" type="date">
+			<span>Date to: </span><input id="to-date" type="date">
+			<span>Order by: </span>
+				<select>
+					<option class="drop-down" value="relevance">Relevance</option>
+					<option class="drop-down" value="newest">Newest</option>
+					<option class="drop-down" value="oldest">Oldest</option>
+				</select>
+			<button class="btn btn-default" id="submit" type="submit">Submit</button>
+		</form>
+
+		<div class="news-results"></div>
+
+	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
