@@ -13,22 +13,40 @@ $(function() {
 		dateFrom = $('#from-date').val();
 		dateTo = $('#to-date').val();
 		orderBy = $('.drop-down').val();
-		getAjax(searchTopic, dateFrom, dateTo, orderBy, currentPage);	//make the API call
+
+		//validate form, make API call if it validates
+		if (validateForm()) {
+			getAjax();	//make the API call
+		}
 	});
+
+	function validateForm() {
+		if(!searchTopic || !dateFrom || !dateTo) {
+			alert('Please complete all form fields.');	//change this to something better (display in red the form field at issue?)
+			return false;
+		}
+
+		if(dateFrom > dateTo) {
+			alert('From date must be before to date.');
+			return false;
+		}
+
+		return true;
+	}
 
 	function clickNext() {
 		currentPage++;
 		$('.news-results').empty();
-		getAjax(searchTopic, dateFrom, dateTo, orderBy, currentPage);
+		getAjax();
 	}
 
 	function clickPrevious() {
 		currentPage--;
 		$('.news-results').empty();
-		getAjax(searchTopic, dateFrom, dateTo, orderBy, currentPage);
+		getAjax();
 	}
 
-	function getAjax(searchTopic, dateFrom, dateTo, orderBy, currentPage) {
+	function getAjax() {
 		$.ajax({
 			url: 'https://content.guardianapis.com/search?page=' + currentPage + '&q=' + searchTopic + '&api-key=9f55a2ee-1376-4d7f-b1bf-dfed2da408c5' + '&from-date=' + dateFrom + '&to-date=' + dateTo + '&order-by=' + orderBy,
 			success: function (data) {
@@ -50,7 +68,7 @@ $(function() {
 				//regEx to extract the part of the date that we actually want to display.
 				data.response.results.forEach(function (element, index, array) {
 					var contentDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
-					var contentHtml = '<div class="content-html hidden">' + '<a href="' + element.webUrl + '">' + element.webTitle + '</a>' + '<br>' + contentDate + '</div>';
+					var contentHtml = '<div class="content-html hidden">' + '<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a>' + '<br>' + contentDate + '</div>';
 					$('.news-results').append(contentHtml);
 				})
 				

@@ -19,17 +19,21 @@
 
 		<h1>Newsboys</h1>
 
-		<form>
-			<div><input id="search" type="textbox" placeholder="Search topic"></div>
-			<span>Date from: </span><input id="from-date" type="date">
-			<span>Date to: </span><input id="to-date" type="date">
-			<span>Order by: </span>
-				<select>
-					<option class="drop-down" value="relevance">Relevance</option>
-					<option class="drop-down" value="newest">Newest</option>
-					<option class="drop-down" value="oldest">Oldest</option>
-				</select>
-			<button class="btn btn-default" id="submit" type="submit">Submit</button>
+		<form class="form-inline">
+			<div class="form-group">
+				<div id="search-test"><input id="search" class="form-control" type="textbox" placeholder="Search topic" autofocus></div>
+				<label for="from-date">Date from: </label>
+					<input id="from-date" class="form-control" type="date">
+				<label for="to-date">Date to: </label>
+					<input id="to-date" class="form-control" type="date">
+				<label for="order-by">Order by: </label>
+					<select class="form-control" id="order-by">
+						<option class="drop-down" value="relevance">Relevance</option>
+						<option class="drop-down" value="newest">Newest</option>
+						<option class="drop-down" value="oldest">Oldest</option>
+					</select>
+				<button class="btn btn-default" id="submit" type="submit">Submit</button>
+			</div>
 		</form>
 
 		<div class="news-results"></div>
