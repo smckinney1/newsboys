@@ -34,10 +34,28 @@ $(function() {
 		return true;
 	}
 
+	//below functions disable/enable Previous & Next buttons and make them unclickable/clickable depending on page number
+
+	function showNextButton(pages) {
+		if(currentPage === pages) {
+			$('.next').addClass('disabled').off('click');
+		} else {
+			$('.next').removeClass('disabled').on('click', clickNext);
+		}
+	}
+
 	function clickNext() {
 		currentPage++;
 		$('.news-results').empty();
 		getAjax();
+	}
+
+	function showPreviousButton(pages) {
+		if(currentPage === 1) {
+			$('.previous').addClass('disabled').off('click');
+		} else {
+			$('.previous').removeClass('disabled').on('click', clickPrevious);
+		}
 	}
 
 	function clickPrevious() {
@@ -51,28 +69,23 @@ $(function() {
 			url: 'https://content.guardianapis.com/search?page=' + currentPage + '&q=' + searchTopic + '&api-key=9f55a2ee-1376-4d7f-b1bf-dfed2da408c5' + '&from-date=' + dateFrom + '&to-date=' + dateTo + '&order-by=' + orderBy,
 			success: function (data) {
 
-				//below conditional statements disable/enable Previous & Next buttons and make them unclickable/clickable depending on page number
-				if(currentPage === data.response.pages) {
-					$('.next').addClass('disabled').off('click');
-				} else {
-					$('.next').removeClass('disabled').on('click', clickNext);
-				}
+				if(data.response.total !== 0) {
 
-				if(currentPage === 1) {
-					$('.previous').addClass('disabled').off('click');
-				} else {
-					$('.previous').removeClass('disabled').on('click', clickPrevious);
-				}
+					showNextButton(data.response.pages);
+					showPreviousButton(data.response.pages);
+					//for each search result, create a link to the news story along with the date.
+					//regEx to extract the part of the date that we actually want to display.
+					data.response.results.forEach(function (element, index, array) {
+						var contentDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
+						var contentHtml = '<div class="content-html">' + '<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a>' + '<br>' + contentDate + '</div>';
+						$('.news-results').append(contentHtml);
+					})
 
-				//for each search result, create a link to the news story along with the date.
-				//regEx to extract the part of the date that we actually want to display.
-				data.response.results.forEach(function (element, index, array) {
-					var contentDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
-					var contentHtml = '<div class="content-html hidden">' + '<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a>' + '<br>' + contentDate + '</div>';
+				} else {
+					var contentHtml = '<div>' + 'No results found.' + '</div>';
 					$('.news-results').append(contentHtml);
-				})
-				
-				$(".content-html").removeClass('hidden');	//the "hidden" class causes everything from forEach to show at the same time. Remove later?
+				}
+
 				$('.pages').removeClass('hidden');
 			},
 

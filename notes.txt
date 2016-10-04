@@ -1,0 +1,33 @@
+TO DO 
+
+--NEWS RESULTS PAGE---
+
+(Easy?)
+
+--Limit date range to 30 days at a time? (to minimize API calls)
+--Also see if we can store the results of the API call so that an API call doesn't need to be made each time "Previous" and "Next" is clicked...or save this till using a framework?
+
+Users should be able to...
+(1) Click the link for a news story and have a preview show up in light box
+(2) See the input field of the form change color if there is an error for that form field
+(3) Have the date fields default to today's date(?)
+--Not a priority
+
+~~~UI changes~~~
+(1) Display something if no API call has been made yet.
+(2) Search occurs at the top, search bar is visible and when you start typing, the date picker and "order by" pieces of the form come down (save for when using framework?)
+
+(Harder)
+
+Users should be able to...
+(1) Click a star on the news story to "favorite"/save it
+----This will add the news story to an object/array containing news stories, send to "database"
+(2) Click to their "Favorites" screen
+
+--Favorites page--
+
+Users should be able to...
+(1) View their favorited stories
+(2) Save comments on the story...and tweet them?
+(3) Remove comments
+(4) Remove favorites
