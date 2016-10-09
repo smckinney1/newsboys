@@ -2,10 +2,19 @@ TO DO
 
 --NEWS RESULTS PAGE---
 
+
+****JQUERY .DATA()****
+$('.blah').data({title: 'blah', date: 'blah'});
+$('.blah').click(function (){
+	var foo = $(this).data();
+	console.log(foo);
+})
+
 (Easy?)
 
---Limit date range to 30 days at a time? (to minimize API calls)
---Also see if we can store the results of the API call so that an API call doesn't need to be made each time "Previous" and "Next" is clicked...or save this till using a framework?
+(1) Limit date range to 30 days at a time? (to minimize API calls)
+--Not a priority
+(2) Also see if we can store the results of the API call so that an API call doesn't need to be made each time "Previous" and "Next" is clicked...or save this till using a framework?
 
 Users should be able to...
 (1) Click the link for a news story and have a preview show up in light box
@@ -22,6 +31,7 @@ Users should be able to...
 Users should be able to...
 (1) Click a star on the news story to "favorite"/save it
 ----This will add the news story to an object/array containing news stories, send to "database"
+----Save in local storage first
 (2) Click to their "Favorites" screen
 
 --Favorites page--
@@ -31,3 +41,7 @@ Users should be able to...
 (2) Save comments on the story...and tweet them?
 (3) Remove comments
 (4) Remove favorites
+
+~~~~~
+
+Add parameters to "Favorites" object so that results from the API call can be pulled in.

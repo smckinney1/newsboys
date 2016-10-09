@@ -15,3 +15,12 @@
   background-color: #fff;
   border: 1px solid #ddd;
 }
+
+.glyphicon.glyphicon-heart {
+	float: right;
+	font-size: 20px;
+}
+
+.glyphicon.glyphicon-heart:hover {
+	color: #FFB6C1;
+};

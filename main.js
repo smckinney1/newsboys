@@ -2,6 +2,18 @@ $(function() {
 
 	var currentPage = 1;
 	var searchTopic, dateFrom, dateTo, orderBy;	//set all of these variables at the top so that they can be used in other functions
+	
+	function Favorite (data) { //add parameters here
+		this.title = data.response.results.webTitle,
+		this.link = data.response.results.webUrl,
+		this.date = data.response.results.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
+
+		this.saveSelf = function() {
+			//save to local storage
+		}
+
+	
+	}
 
 	$('#submit').click(function(event) {
 
@@ -18,6 +30,12 @@ $(function() {
 		if (validateForm()) {
 			getAjax();	//make the API call
 		}
+	});
+
+	$('.glyphicon.glyphicon-heart').click(function() {
+		//initialize a new Favorite
+		//pass it the data from the API call...? to create new Favorite
+		//x.saveSelf(); -->fired from the Favorite function
 	});
 
 	function validateForm() {
@@ -77,8 +95,9 @@ $(function() {
 					//regEx to extract the part of the date that we actually want to display.
 					data.response.results.forEach(function (element, index, array) {
 						var contentDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
-						var contentHtml = '<div class="content-html">' + '<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a>' + '<br>' + contentDate + '</div>';
+						var contentHtml = '<div class="content-html">' + '<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>' + '<br>' + contentDate + '</div>';
 						$('.news-results').append(contentHtml);
+						//jQuery .data()
 					})
 
 				} else {
