@@ -1,19 +1,14 @@
+'use strict';
+
+////////////////REMOVE LATER ///////////////
+//window.localStorage.clear();
+
+//APP:
+
 $(function() {
 
 	var currentPage = 1;
 	var searchTopic, dateFrom, dateTo, orderBy;	//set all of these variables at the top so that they can be used in other functions
-	
-	function Favorite (data) { //add parameters here
-		this.title = data.response.results.webTitle,
-		this.link = data.response.results.webUrl,
-		this.date = data.response.results.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
-
-		this.saveSelf = function() {
-			//save to local storage
-		}
-
-	
-	}
 
 	$('#submit').click(function(event) {
 
@@ -32,11 +27,6 @@ $(function() {
 		}
 	});
 
-	$('.glyphicon.glyphicon-heart').click(function() {
-		//initialize a new Favorite
-		//pass it the data from the API call...? to create new Favorite
-		//x.saveSelf(); -->fired from the Favorite function
-	});
 
 	function validateForm() {
 		if(!searchTopic || !dateFrom || !dateTo) {
@@ -94,15 +84,40 @@ $(function() {
 					//for each search result, create a link to the news story along with the date.
 					//regEx to extract the part of the date that we actually want to display.
 					data.response.results.forEach(function (element, index, array) {
-						var contentDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
-						var contentHtml = '<div class="content-html">' + '<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>' + '<br>' + contentDate + '</div>';
-						$('.news-results').append(contentHtml);
-						//jQuery .data()
+						var pubDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
+
+						//convert string to jQuery object, attach data to it before you append it to the DOM.
+						var row = 
+							$('<div class="news-story">' +
+								'<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a>' + 
+								'<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>' + 
+								'<br>' + 
+								pubDate + 
+							'</div>');
+
+						//below code finds the heart icon so that we can allow it to save to favorites
+						var heartIcon = row.find('.glyphicon-heart');
+						heartIcon.data({title: element.webTitle, url: element.webUrl, date: pubDate[0]});
+						heartIcon.click(function() {
+							//var thisHeart = $(this);
+							var story = $(this).data();
+							var retrievedObject = localStorage.getItem('savedFavorites');				//set the items in local storage (if any) to 																				variable
+							if (retrievedObject) {														//if local storage has items, execute code
+								var parsedObject = JSON.parse(retrievedObject);
+								parsedObject.push(story);
+								localStorage.setItem('savedFavorites', JSON.stringify(parsedObject));
+							} else {																	//code if local storage is empty
+								var favoriteItem = [story];
+								localStorage.setItem('savedFavorites', JSON.stringify(favoriteItem));
+							}
+						});
+
+						$('.news-results').append(row);
 					})
 
 				} else {
-					var contentHtml = '<div>' + 'No results found.' + '</div>';
-					$('.news-results').append(contentHtml);
+					var row = '<div>' + 'No results found.' + '</div>';
+					$('.news-results').append(row);
 				}
 
 				$('.pages').removeClass('hidden');

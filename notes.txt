@@ -29,7 +29,7 @@ Users should be able to...
 (Harder)
 
 Users should be able to...
-(1) Click a star on the news story to "favorite"/save it
+///DONE//// (1) Click a star on the news story to "favorite"/save it
 ----This will add the news story to an object/array containing news stories, send to "database"
 ----Save in local storage first
 (2) Click to their "Favorites" screen
@@ -41,6 +41,7 @@ Users should be able to...
 (2) Save comments on the story...and tweet them?
 (3) Remove comments
 (4) Remove favorites
+(5) Sort their favorites
 
 ~~~~~
 
