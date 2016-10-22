@@ -3,12 +3,18 @@
 ////////////////REMOVE LATER ///////////////
 //window.localStorage.clear();
 
-//APP:
+Date.prototype.toDateInputValue = function() {
+	return (new Date(this)).toJSON().slice(0,10);
+};
 
 $(function() {
 
 	var currentPage = 1;
 	var searchTopic, dateFrom, dateTo, orderBy;	//set all of these variables at the top so that they can be used in other functions
+
+
+	$('#from-date').val(new Date().toDateInputValue());
+	$('#to-date').val(new Date().toDateInputValue());
 
 	$('#submit').click(function(event) {
 
@@ -84,7 +90,8 @@ $(function() {
 					//for each search result, create a link to the news story along with the date.
 					//regEx to extract the part of the date that we actually want to display.
 					data.response.results.forEach(function (element, index, array) {
-						var pubDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);
+						//var pubDate = element.webPublicationDate.match(/\d{4}[-]\d{2}[-]\d{2}/g);		//don't need regEx, see below!
+						var pubDate = (new Date(element.webPublicationDate)).toLocaleDateString();
 
 						//convert string to jQuery object, attach data to it before you append it to the DOM.
 						var row = 
@@ -98,9 +105,11 @@ $(function() {
 						//below code finds the heart icon so that we can allow it to save to favorites
 						var heartIcon = row.find('.glyphicon-heart');
 						heartIcon.data({title: element.webTitle, url: element.webUrl, date: pubDate[0]});
-						heartIcon.click(function() {
+						/*heartIcon.click(function() {
 							//var thisHeart = $(this);
 							var story = $(this).data();
+							var storedFavorites = localStorage.
+
 							var retrievedObject = localStorage.getItem('savedFavorites');				//set the items in local storage (if any) to 																				variable
 							if (retrievedObject) {														//if local storage has items, execute code
 								var parsedObject = JSON.parse(retrievedObject);
@@ -110,7 +119,17 @@ $(function() {
 								var favoriteItem = [story];
 								localStorage.setItem('savedFavorites', JSON.stringify(favoriteItem));
 							}
-						});
+						});*/
+
+						heartIcon.click(function () {
+
+						    var story = $(this).data();
+						    var favorites = JSON.parse(localStorage.getItem('savedFavorites') || "[]");	//DEFAULT to the savedFavorites in LS, if there are none, create an empty array. Same thing as what was being done in commented code above, only in fewer lines.
+
+						    favorites.push(story);
+						    localStorage.setItem('savedFavorites', JSON.stringify(favorites));
+
+						})
 
 						$('.news-results').append(row);
 					})
