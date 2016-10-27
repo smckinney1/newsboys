@@ -9,7 +9,7 @@ body {
 
 /****** NAVIGATION *******/
 
-nav:first-of-type {
+nav {
 	background: rgba(41,41,41,0.55);
 	min-height: 60px;
 }
@@ -39,8 +39,12 @@ nav a:hover {
 
 /*Need to find a way to select this element without giving it a class or an ID.*/
 
-.figureout {
+/*.figureout {
 	background: red;
+}*/
+
+ul li:nth-child(2) {
+    background: red;
 }
 
 /****** CONTENT *******/
@@ -50,22 +54,22 @@ nav a:hover {
 	
 }
 
-.search {
+#search-area {
 	position: relative;
 }
 
-.search input {
+#search-area input {
 	text-indent: 30px;
 }
 
-.search .glyphicon-search {
+#search-area .glyphicon-search {
 	position: absolute;
 	top: 17px;
 	left: 15px;
 	font-size: 15px;
 }
 
-#search {
+#search-area .form-control {
 	border-radius: 20px;
 }
 

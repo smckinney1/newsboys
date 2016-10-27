@@ -16,13 +16,11 @@ $(function() {
 	$('#from-date').val(new Date().toDateInputValue());
 	$('#to-date').val(new Date().toDateInputValue());
 
-	$('#submit').click(function() {
-
-		//event.preventDefault();
+	function clickSearch () {
 		$('.news-results').empty();					//empty the news-results div of all elements inserted from previous searches
 
 		//Information below to be used in the query string in AJAX call
-		searchTopic = $('#search').val();		
+		searchTopic = $('#search-area .form-control').val();		
 		dateFrom = $('#from-date').val();
 		dateTo = $('#to-date').val();
 		orderBy = $('.drop-down').val();
@@ -31,35 +29,31 @@ $(function() {
 		if (validateForm()) {
 			getAjax();	//make the API call
 		}
-	});
+	};
 
+	//Below: When search is clicked or "enter" pressed, run the clickSearch function
 
-/*	function validateForm() {
-		if(!searchTopic || !dateFrom || !dateTo) {
-			alert('Please complete all form fields.');	//change this to something better (display in red the form field at issue?)
-			return false;
+	$('#search-area .glyphicon').click(clickSearch);		
+
+	$('#search-area .form-control').keypress(function(e) {
+		if (e.which === 13) {
+			e.preventDefault();
+			clickSearch();
+			console.log('come on');
 		}
-
-		if(dateFrom > dateTo) {
-			alert('From date must be before to date.');
-			return false;
-		}
-
-		return true;
-	}*/
-
+	})
 
 	function validateForm() {
 
 		if (!searchTopic) {
-			$('.search').addClass('has-error');
+			$('#search-area .form-control').addClass('has-error');
 			return false;
 		} else if (!dateFrom || !dateTo || dateFrom > dateTo) {
 			$('.dates').addClass('has-error');
 			return false;
 		}
 
-		$('.search').removeClass('has-error').addClass('has-success');
+		$('#search-area .form-control').removeClass('has-error').addClass('has-success');
 		$('.dates').removeClass('has-error').addClass('has-success');
 		return true;
 
