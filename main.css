@@ -9,7 +9,7 @@ body {
 
 /****** NAVIGATION *******/
 
-nav {
+nav:first-of-type {
 	background: rgba(41,41,41,0.55);
 	min-height: 60px;
 }
@@ -47,7 +47,7 @@ nav a:hover {
 
 .container {
 	margin-top: 20px;
-	background-color: #D3D3D3;
+	
 }
 
 .search {
