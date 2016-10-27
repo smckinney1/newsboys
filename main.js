@@ -16,9 +16,9 @@ $(function() {
 	$('#from-date').val(new Date().toDateInputValue());
 	$('#to-date').val(new Date().toDateInputValue());
 
-	$('#submit').click(function(event) {
+	$('#submit').click(function() {
 
-		event.preventDefault();
+		//event.preventDefault();
 		$('.news-results').empty();					//empty the news-results div of all elements inserted from previous searches
 
 		//Information below to be used in the query string in AJAX call
@@ -34,7 +34,7 @@ $(function() {
 	});
 
 
-	function validateForm() {
+/*	function validateForm() {
 		if(!searchTopic || !dateFrom || !dateTo) {
 			alert('Please complete all form fields.');	//change this to something better (display in red the form field at issue?)
 			return false;
@@ -46,6 +46,23 @@ $(function() {
 		}
 
 		return true;
+	}*/
+
+
+	function validateForm() {
+
+		if (!searchTopic) {
+			$('.search').addClass('has-error');
+			return false;
+		} else if (!dateFrom || !dateTo || dateFrom > dateTo) {
+			$('.dates').addClass('has-error');
+			return false;
+		}
+
+		$('.search').removeClass('has-error').addClass('has-success');
+		$('.dates').removeClass('has-error').addClass('has-success');
+		return true;
+
 	}
 
 	//below functions disable/enable Previous & Next buttons and make them unclickable/clickable depending on page number

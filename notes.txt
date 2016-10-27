@@ -1,5 +1,13 @@
 TO DO 
 
+
+10/27/16
+>>>Added "hidden" class to form elements I don't want to see right now. Remove later & show them in a better way.
+>>>Figure out how to select the "Saved" option at the top in CSS without using a class or ID
+>>>Figure out how to count pressing Enter as clicking "Submit" for the form
+>>>>>Removed physical "Submit" button & replaced with the magnifying glass
+>>>Removed the "favorites" button in the form, replaced it with link in nav
+
 --NEWS RESULTS PAGE---
 
 
@@ -19,8 +27,7 @@ $('.blah').click(function (){
 Users should be able to...
 (1) Click the link for a news story and have a preview show up in light box
 (2) See the input field of the form change color if there is an error for that form field
-(3) Have the date fields default to today's date(?)
---Not a priority
+///DONE/// (3) Have the date fields default to today's date(?)
 
 ~~~UI changes~~~
 (1) Display something if no API call has been made yet.
@@ -32,7 +39,8 @@ Users should be able to...
 ///DONE//// (1) Click a star on the news story to "favorite"/save it
 ----This will add the news story to an object/array containing news stories, send to "database"
 ----Save in local storage first
-(2) Click to their "Favorites" screen
+///DONE/// (2) Click to their "Favorites" screen
+(3) Click back to Search from Favorites
 
 --Favorites page--
 

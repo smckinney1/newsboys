@@ -1,5 +1,72 @@
+/**********http://pico.freshpixels.pl/goodfood/test.html************/
+
+body {
+	background: url("images/newspaper_background.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+/****** NAVIGATION *******/
+
+nav {
+	background: rgba(41,41,41,0.55);
+	min-height: 60px;
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav li {
+	display: inline-block;
+}
+
+nav .logo {
+	font-family: 'BioRhyme', serif;
+	font-size: 40px;
+	font-weight: 800;
+}
+
+nav a, nav a:hover {
+	text-decoration: none;
+	color:  rgba(255,255,255,1);
+}
+
+nav a:hover {
+	background: rgba(21,21,21,0.55);
+}
+
+/*Need to find a way to select this element without giving it a class or an ID.*/
+
+.figureout {
+	background: red;
+}
+
+/****** CONTENT *******/
+
 .container {
+	margin-top: 20px;
 	background-color: #D3D3D3;
+}
+
+.search {
+	position: relative;
+}
+
+.search input {
+	text-indent: 30px;
+}
+
+.search .glyphicon-search {
+	position: absolute;
+	top: 17px;
+	left: 15px;
+	font-size: 15px;
+}
+
+#search {
+	border-radius: 20px;
 }
 
 .news-results {
