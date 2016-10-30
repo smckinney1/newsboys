@@ -78,7 +78,7 @@ ul li:nth-child(2) {
   margin-bottom: 20px;
 }
 
-.news-results div {
+.news-results div, .favorites div {
   position: relative;
   display: block;
   padding: 10px 15px;

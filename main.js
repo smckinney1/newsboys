@@ -39,7 +39,6 @@ $(function() {
 		if (e.which === 13) {
 			e.preventDefault();
 			clickSearch();
-			console.log('come on');
 		}
 	})
 
@@ -154,7 +153,7 @@ $(function() {
 			},
 
 			error: function(data) {
-				console.log(data.response);
+				console.log('Error: ', data.response);
 			}
  		
 		});

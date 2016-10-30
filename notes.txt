@@ -30,7 +30,7 @@ Users should be able to...
 ///DONE/// (3) Have the date fields default to today's date(?)
 
 ~~~UI changes~~~
-(1) Display something if no API call has been made yet.
+///DONE/// (1) Display something if no API call has been made yet.
 (2) Search occurs at the top, search bar is visible and when you start typing, the date picker and "order by" pieces of the form come down (save for when using framework?)
 
 (Harder)
@@ -40,7 +40,7 @@ Users should be able to...
 ----This will add the news story to an object/array containing news stories, send to "database"
 ----Save in local storage first
 ///DONE/// (2) Click to their "Favorites" screen
-(3) Click back to Search from Favorites
+///DONE/// (3) Click back to Search from Favorites
 
 --Favorites page--
 
