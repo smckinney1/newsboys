@@ -29,7 +29,7 @@ $(function() {
 		if (validateForm()) {
 			getAjax();	//make the API call
 		}
-	};
+	}
 
 	//Below: When search is clicked or "enter" pressed, run the clickSearch function
 
@@ -114,7 +114,7 @@ $(function() {
 
 						//below code finds the heart icon so that we can allow it to save to favorites
 						var heartIcon = row.find('.glyphicon-heart');
-						heartIcon.data({title: element.webTitle, url: element.webUrl, date: pubDate[0]});
+						heartIcon.data({title: element.webTitle, url: element.webUrl, date: pubDate});
 						/*heartIcon.click(function() {
 							//var thisHeart = $(this);
 							var story = $(this).data();

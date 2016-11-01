@@ -37,12 +37,6 @@ nav a:hover {
 	background: rgba(21,21,21,0.55);
 }
 
-/*Need to find a way to select this element without giving it a class or an ID.*/
-
-/*.figureout {
-	background: red;
-}*/
-
 ul li:nth-child(2) {
     background: red;
 }
@@ -87,11 +81,17 @@ ul li:nth-child(2) {
   border: 1px solid #ddd;
 }
 
-.glyphicon.glyphicon-heart {
+/****** ICON BEHAVIOR *******/
+
+.glyphicon.glyphicon-heart, .glyphicon.glyphicon-remove {
 	float: right;
 	font-size: 20px;
 }
 
 .glyphicon.glyphicon-heart:hover {
 	color: #FFB6C1;
+};
+
+.glyphicon.glyphicon-remove:hover {
+	color: #f00;
 };
