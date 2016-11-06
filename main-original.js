@@ -3,14 +3,6 @@
 ////////////////REMOVE LATER ///////////////
 //window.localStorage.clear();
 
-/*$("#screenshots header div").click(function() {
-    $("#screenshots header div").removeClass("active");
-    var os = $(this).attr("class");
-    $(this).addClass("active");
-    $(".thumbnails img").hide();
-    $(".thumbnails ." + os).show();
-});*/
-
 Date.prototype.toDateInputValue = function() {
 	return (new Date(this)).toJSON().slice(0,10);
 };
@@ -20,27 +12,9 @@ $(function() {
 	var currentPage = 1;
 	var searchTopic, dateFrom, dateTo, orderBy;	//set all of these variables at the top so that they can be used in other functions
 
-	//Below code, remove once add UI functionality to pick date
 
 	$('#from-date').val(new Date().toDateInputValue());
 	$('#to-date').val(new Date().toDateInputValue());
-	$('.home').css({ "color": "#ffff9a" });
-
-	//Show/hide
-
-	$('.favorites-link').click(function() {
-		$('.home').css({ "color": "" });
-		$('.favorites-link').css({ "color": "#ffff9a" });
-		$('.results-container').addClass('hidden');
-		$('.favorites-container').removeClass('hidden');
-	});
-
-	$('.home').click(function() {
-		$('.favorites-link').css({ "color": "" });
-		$('.home').css({ "color": "#ffff9a" });
-		$('.favorites-container').addClass('hidden');
-		$('.results-container').removeClass('hidden');
-	})
 
 	function clickSearch () {
 		$('.news-results').empty();					//empty the news-results div of all elements inserted from previous searches
@@ -133,14 +107,14 @@ $(function() {
 						var row = 
 							$('<div class="news-story">' +
 								'<a href="' + element.webUrl + '" target="_blank">' + element.webTitle + '</a>' + 
-								'<span class="glyphicon glyphicon-heart heart-favorite" aria-hidden="true"></span>' + 
+								'<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>' + 
 								'<br>' + 
 								pubDate + 
 							'</div>');
 
 						//below code finds the heart icon so that we can allow it to save to favorites
-						var heartIcon = row.find('.heart-favorite');
-						heartIcon.data({ id: Math.floor(Math.random() * 1e9), title: element.webTitle, url: element.webUrl, date: pubDate });
+						var heartIcon = row.find('.glyphicon-heart');
+						heartIcon.data({title: element.webTitle, url: element.webUrl, date: pubDate});
 						/*heartIcon.click(function() {
 							//var thisHeart = $(this);
 							var story = $(this).data();
@@ -164,9 +138,6 @@ $(function() {
 
 						    favorites.push(story);
 						    localStorage.setItem('savedFavorites', JSON.stringify(favorites));
-						    allFavorites = JSON.parse(localStorage.getItem('savedFavorites'));
-						    $('.favorite-story').remove();
-							displayFavorites();
 
 						})
 

@@ -1,6 +1,9 @@
 TO DO 
 
 
+https://anandnalya.com/2012/03/building-a-single-page-webapp-with-jquery/
+http://tutorialzine.com/2015/02/single-page-app-without-a-framework/
+
 10/27/16
 >>>Added "hidden" class to form elements I don't want to see right now. Remove later & show them in a better way.
 >>>Figure out how to select the "Saved" option at the top in CSS without using a class or ID

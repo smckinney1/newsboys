@@ -19,45 +19,73 @@
 	<header>
 		<nav>
 			<ul>
-				<li><a href="index.html" class="logo">Newsboys</a></li>
-				<li><a href="favorites.html" class="figureout">Saved</a></li>
+				<li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><a href="#" class="favorites-link"><span class="glyphicon glyphicon-heart nav-heart"></a></li>
 			</ul>
 		</nav>
 	</header>
 
+	<p class="text-center">Newsboys</p>
+
 	<div class="container">
+		<div class="results-container">
 
-		<form>
-			<div class="form-group search" id="search-area">
-				<span class="glyphicon glyphicon-search"></span>
-				<input class="form-control input-lg" type="textbox" placeholder="Search topic" autofocus>
+			<form>
+				<div class="form-group search" id="search-area">
+					<span class="glyphicon glyphicon-search"></span>
+					<input class="form-control input-lg" type="textbox" placeholder="Search topic" autofocus>
+				</div>
+
+<!-- 				<div class="form-group dates">
+					<label for="from-date">Date from: </label>
+					<input id="from-date" class="form-control" type="date">
+					<label for="to-date">Date to: </label>
+					<input id="to-date" class="form-control" type="date">
+				</div>
+ -->
+ 				<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseOptions" aria-expanded="false" aria-controls="collapseOptions">
+   					 Advanced Options
+				</a>
+				<div class="collapse" id="collapseOptions">
+					<br>
+					<span class="dates form-inline">
+					    <label for="from-date">Date from: </label>
+						<input id="from-date" class="form-control" type="date">
+						<label for="to-date">Date to: </label>
+						<input id="to-date" class="form-control" type="date">
+					</span>
+
+					<span class="order form-inline">
+						<label for="order-by">Order by: </label>
+						<select class="form-control" id="order-by">
+							<option class="drop-down" value="relevance">Relevance</option>
+							<option class="drop-down" value="newest">Newest</option>
+							<option class="drop-down" value="oldest">Oldest</option>
+						</select>
+					</span>
+
+				</div>
+
+			</form>
+
+			<div class="news-results"></div>
+
+			<div aria-label="..." class="pages hidden">
+			 	<ul class="pager">
+				    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+				    <li class="next"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
+			 	 </ul>
 			</div>
+		</div>
 
-			<div class="form-group dates hidden">
-				<label for="from-date">Date from: </label>
-				<input id="from-date" class="form-control" type="date">
-				<label for="to-date">Date to: </label>
-				<input id="to-date" class="form-control" type="date">
-			</div>
+		<div class="favorites-container hidden">
+			<!--Insert favorites markuphere-->
+			<button class="btn btn-primary sort-date">Sort by Date</button>
+			<button class="btn btn-primary sort-title">Sort by Title</button>
+			<div class="favorites-container">
+			<div class="favorites"></div>
+		</div>
 
-			<div class="form-group order hidden">
-				<label for="order-by">Order by: </label>
-				<select class="form-control" id="order-by">
-					<option class="drop-down" value="relevance">Relevance</option>
-					<option class="drop-down" value="newest">Newest</option>
-					<option class="drop-down" value="oldest">Oldest</option>
-				</select>
-			</div>
-
-		</form>
-
-		<div class="news-results"></div>
-
-		<div aria-label="..." class="pages hidden">
-		 	<ul class="pager">
-			    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-			    <li class="next"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
-		 	 </ul>
 		</div>
 
 	</div>
@@ -65,5 +93,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="favorites.js"></script>
 </body>
 </html>

@@ -1,17 +1,20 @@
 /**********http://pico.freshpixels.pl/goodfood/test.html************/
 
 body {
-	background: url("images/newspaper_background.jpg");
+	background: url("images/newspaper_background-2.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: auto;
 }
 
 /****** NAVIGATION *******/
 
 nav {
 	background: rgba(41,41,41,0.55);
-	min-height: 60px;
+	min-height: 50px;
+	text-align: right;
+	padding-right: 20px;
+	padding-top: 5px;
 }
 
 nav ul {
@@ -22,30 +25,41 @@ nav li {
 	display: inline-block;
 }
 
-nav .logo {
-	font-family: 'BioRhyme', serif;
-	font-size: 40px;
-	font-weight: 800;
-}
-
-nav a, nav a:hover {
+nav a, nav a:hover, nav a:visited {
 	text-decoration: none;
 	color:  rgba(255,255,255,1);
 }
 
-nav a:hover {
+/*nav span:hover {
 	background: rgba(21,21,21,0.55);
-}
+}*/
 
 ul li:nth-child(2) {
-    background: red;
+    padding-left: 20px;
 }
 
 /****** CONTENT *******/
 
+p {
+	font-family: 'BioRhyme', serif;
+	font-size: 9rem;
+	font-weight: 800;
+	color: #fff;
+	text-shadow: 5px 5px 25px #000;
+}
+
+label {
+	color: #fff;
+}
+
 .container {
-	margin-top: 20px;
-	
+	background: rgba(41,41,41,0.55);
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.container, .news-results {
+	margin-top: 15px;
 }
 
 #search-area {
@@ -83,15 +97,25 @@ ul li:nth-child(2) {
 
 /****** ICON BEHAVIOR *******/
 
-.glyphicon.glyphicon-heart, .glyphicon.glyphicon-remove {
+.glyphicon-home, .nav-heart {
+	font-size: 40px;
+}
+
+.glyphicon-home:hover, .nav-heart:hover {
+	color: #ffff9a;
+}
+
+.heart-favorite,
+.glyphicon-remove {
 	float: right;
 	font-size: 20px;
 }
 
-.glyphicon.glyphicon-heart:hover {
+.heart-favorite:hover {
 	color: #FFB6C1;
-};
+}
 
-.glyphicon.glyphicon-remove:hover {
-	color: #f00;
-};
+.glyphicon-remove:hover {
+	color: #F00;
+}
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Newsboys</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=BioRhyme:400,800">
+	<link rel="stylesheet" href="main.css">
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<header>
+		<nav>
+			<ul>
+				<li><a href="index.html" class="logo">Newsboys</a></li>
+				<li><a href="favorites.html" class="figureout">Saved</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="container">
+
+		<form>
+			<div class="form-group search" id="search-area">
+				<span class="glyphicon glyphicon-search"></span>
+				<input class="form-control input-lg" type="textbox" placeholder="Search topic" autofocus>
+			</div>
+
+			<div class="form-group dates hidden">
+				<label for="from-date">Date from: </label>
+				<input id="from-date" class="form-control" type="date">
+				<label for="to-date">Date to: </label>
+				<input id="to-date" class="form-control" type="date">
+			</div>
+
+			<div class="form-group order hidden">
+				<label for="order-by">Order by: </label>
+				<select class="form-control" id="order-by">
+					<option class="drop-down" value="relevance">Relevance</option>
+					<option class="drop-down" value="newest">Newest</option>
+					<option class="drop-down" value="oldest">Oldest</option>
+				</select>
+			</div>
+
+		</form>
+
+		<div class="news-results"></div>
+
+		<div aria-label="..." class="pages hidden">
+		 	<ul class="pager">
+			    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+			    <li class="next"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
+		 	 </ul>
+		</div>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
