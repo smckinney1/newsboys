@@ -3,14 +3,6 @@
 ////////////////REMOVE LATER ///////////////
 //window.localStorage.clear();
 
-/*$("#screenshots header div").click(function() {
-    $("#screenshots header div").removeClass("active");
-    var os = $(this).attr("class");
-    $(this).addClass("active");
-    $(".thumbnails img").hide();
-    $(".thumbnails ." + os).show();
-});*/
-
 Date.prototype.toDateInputValue = function() {
 	return (new Date(this)).toJSON().slice(0,10);
 };
@@ -141,21 +133,6 @@ $(function() {
 						//below code finds the heart icon so that we can allow it to save to favorites
 						var heartIcon = row.find('.heart-favorite');
 						heartIcon.data({ id: Math.floor(Math.random() * 1e9), title: element.webTitle, url: element.webUrl, date: pubDate });
-						/*heartIcon.click(function() {
-							//var thisHeart = $(this);
-							var story = $(this).data();
-							var storedFavorites = localStorage.
-
-							var retrievedObject = localStorage.getItem('savedFavorites');				//set the items in local storage (if any) to 																				variable
-							if (retrievedObject) {														//if local storage has items, execute code
-								var parsedObject = JSON.parse(retrievedObject);
-								parsedObject.push(story);
-								localStorage.setItem('savedFavorites', JSON.stringify(parsedObject));
-							} else {																	//code if local storage is empty
-								var favoriteItem = [story];
-								localStorage.setItem('savedFavorites', JSON.stringify(favoriteItem));
-							}
-						});*/
 
 						heartIcon.click(function () {
 

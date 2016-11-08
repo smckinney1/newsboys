@@ -15,12 +15,14 @@ function displayFavorites() {
 			'</div>');
 
 		var deleteIcon = favoritesRow.find('.glyphicon-remove');
-		deleteIcon.data({ id: element.id });					//attach the ID again so that the "deleteStory" variable further below can access
+		deleteIcon.data({ id: element.id });					//attach the ID again so that the "deletedStory" variable further below can access
 
-		deleteIcon.click(clickDelete);
+		deleteIcon.click(function() {
+			var thisIcon = $(this);
+			$('#dialog-confirm').dialog("open");
+		});
 
 		$('.favorites').append(favoritesRow);
-
 	});
 }
 
@@ -34,7 +36,6 @@ function clickSortByDate() {
 	localStorage.setItem('savedFavorites', JSON.stringify(allFavorites));
 	$('.favorite-story').remove();
 	displayFavorites();
-	//location.reload();
 }
 
 function clickSortByTitle() {
@@ -42,7 +43,6 @@ function clickSortByTitle() {
 		var titleA = a.title.toUpperCase(); // ignore upper and lowercase
 		var titleB = b.title.toUpperCase(); // ignore upper and lowercase
 		return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
-
 	});
 
 	localStorage.setItem('savedFavorites', JSON.stringify(allFavorites));
@@ -50,11 +50,11 @@ function clickSortByTitle() {
 	displayFavorites();
 }
 
-function clickDelete() {
-	var deleteStory = $(this).data().id;
+function deleteStory() {
+	var deletedStory = thisIcon.data().id;
 
 	for (var i = 0; i < allFavorites.length; i++) {
-		if (allFavorites[i].id === deleteStory) {
+		if (allFavorites[i].id === deletedStory) {
 			var index = i;
 			break;
 		}
@@ -62,10 +62,28 @@ function clickDelete() {
 
 	allFavorites.splice(index, 1);
 	localStorage.setItem('savedFavorites', JSON.stringify(allFavorites));
-	var htmlToRemove = $(this).closest('.favorite-story');
+	var htmlToRemove = thisIcon.closest('.favorite-story');
 	htmlToRemove.remove();
 }
 
 $('.sort-date').click(clickSortByDate);
 $('.sort-title').click(clickSortByTitle);
+
+$( "#dialog-confirm" ).dialog({
+	autoOpen: false,
+	resizable: false,
+	height: "auto",
+	width: 400,
+	modal: true,
+	buttons: {
+		Delete: function() {
+     		$( this ).dialog( "close" );
+			deleteStory();
+    	},
+		Cancel: function() {
+			$( this ).dialog( "close" );
+		}
+	}
+});
+
 displayFavorites();

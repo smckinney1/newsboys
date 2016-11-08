@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Newsboys</title>
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=BioRhyme:400,800">
 	<link rel="stylesheet" href="main.css">
 	<!--[if lt IE 9]>
@@ -20,12 +21,12 @@
 		<nav>
 			<ul>
 				<li><a href="#" class="home"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><a href="#" class="favorites-link"><span class="glyphicon glyphicon-heart nav-heart"></a></li>
+				<li><a href="#" class="favorites-link"><span class="glyphicon glyphicon-heart nav-heart"></span></a></li>
 			</ul>
 		</nav>
 	</header>
 
-	<p class="text-center">Newsboys</p>
+	<p class="text-center newsboys">Newsboys</p>
 
 	<div class="container">
 		<div class="results-container">
@@ -78,6 +79,10 @@
 			</div>
 		</div>
 
+		<div id="dialog-confirm" title="Delete story from Favorites?">
+  			<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>This item will be permanently deleted from your Favorites. Are you sure?</p>
+		</div>
+
 		<div class="favorites-container hidden">
 			<!--Insert favorites markuphere-->
 			<button class="btn btn-primary sort-date">Sort by Date</button>
@@ -86,12 +91,14 @@
 			<div class="favorites"></div>
 		</div>
 
+
 		</div>
 
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="favorites.js"></script>
 </body>

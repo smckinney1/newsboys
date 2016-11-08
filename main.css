@@ -40,7 +40,7 @@ ul li:nth-child(2) {
 
 /****** CONTENT *******/
 
-p {
+.newsboys {
 	font-family: 'BioRhyme', serif;
 	font-size: 9rem;
 	font-weight: 800;
