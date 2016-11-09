@@ -1,6 +1,7 @@
 'use strict';
 
 window.allFavorites = JSON.parse(localStorage.getItem('savedFavorites'));
+var thisIcon;												//have to declare this in global scope so that its assignment can be passed into deleteStory()
 
 function displayFavorites() {
 
@@ -18,7 +19,7 @@ function displayFavorites() {
 		deleteIcon.data({ id: element.id });					//attach the ID again so that the "deletedStory" variable further below can access
 
 		deleteIcon.click(function() {
-			var thisIcon = $(this);
+			thisIcon = $(this);
 			$('#dialog-confirm').dialog("open");
 		});
 
@@ -72,16 +73,17 @@ $('.sort-title').click(clickSortByTitle);
 $( "#dialog-confirm" ).dialog({
 	autoOpen: false,
 	resizable: false,
+	draggable: false,
 	height: "auto",
 	width: 400,
 	modal: true,
 	buttons: {
 		Delete: function() {
-     		$( this ).dialog( "close" );
-			deleteStory();
+     		$(this).dialog( "close" );
+     		deleteStory();
     	},
 		Cancel: function() {
-			$( this ).dialog( "close" );
+			$(this).dialog( "close" );
 		}
 	}
 });
